@@ -26,8 +26,12 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
+$counter = 1;
     while($row = $result->fetch_assoc()) {
-        echo $row["json"];
+        if($result->num_rows == $counter){
+		echo $row["json"];
+	}
+	$counter = $counter + 1;
     }
 } else {
     echo "{}";
