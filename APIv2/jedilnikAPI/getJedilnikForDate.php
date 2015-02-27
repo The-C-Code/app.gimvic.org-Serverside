@@ -8,18 +8,18 @@ $password = "urnikZAvse";
 $dbname = "app";
 
 $date = $_GET["date"];
-$malica = $_GET["malica"];
+$type = $_GET["type"];
 
 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 mb_internal_encoding('UTF-8');
-$sql = "";
+$sql = ";";
 
-if($malica){
+if($type=="malica"){
 	$sql = "SELECT json FROM malica where date='".$date."';";
-}else {
+}else if($type=="kosilo"){
 	$sql = "SELECT json FROM kosilo where date='".$date."';";
 }
 $result = $conn->query($sql);
